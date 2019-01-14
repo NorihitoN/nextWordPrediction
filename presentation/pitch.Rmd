@@ -1,0 +1,49 @@
+---
+title: "Notes with autocompletion"
+subtitle: "Assignment for Coursera Data Science Capstone"
+author: "Norihito Nakata"
+date: "1/13/2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## About
+
+This is an assginment for [Data Science Capstone](https://www.coursera.org/learn/data-science-project) course in coursera.
+
+I developed ***Notes with autocompletion***, which is an application to create notes/memos easy.
+Autocompletion function helps users to type the next word based on their input words.
+
+The applecation link is:
+<https://norihiton.shinyapps.io/NextWordPrediction>
+
+The source code is:
+<>.
+
+## How To Use
+
+- Write your note in the text box at the left side bar.
+- During writing a note, the next prediction word appears below the text box in 5sec.
+- If you click one of the prediction words, the clicked word will be added to the text box. If not needed, coutinue to write by yourself.
+- Click "Post" button to add your note to "Memos" list at the main panel.
+- Click "Clear" button to clear all your notes.
+
+## Prediction Model
+
+To predict the next words, three-gram method is used, which is the special case of N-gram method.
+
+- Model Building
+I sampled 30,000 sentences from blogs/twitters. All sentences are tokenized by R library **quanteda** and are converted to a document-feature matrix, which option `ngrams` equals 3).
+By using `textstat_frequency`, I created the dataset which has two columns, `3-gram` and `frequency`.
+
+- Prediction
+The next word prediction function is performed based on the dataset built in the above.
+The function is 
+
+
+## Performance
+
+- Model Performance
