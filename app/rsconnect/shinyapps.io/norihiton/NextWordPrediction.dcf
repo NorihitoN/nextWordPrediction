@@ -5,8 +5,8 @@ account: norihiton
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 643724
-bundleId: 1815559
+bundleId: 1820205
 url: https://norihiton.shinyapps.io/NextWordPrediction/
-when: 1547565318.64038
+when: 1547740499.40149
 asMultiple: FALSE
 asStatic: FALSE

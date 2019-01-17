@@ -14,7 +14,10 @@ shinyUI(fluidPage(
   
   # Application title
   titlePanel("Notes with autocompletion."),
+  tags$a(href = "https://github.com/NorihitoN/nextWordPrediction", "Source code: Github", target = "_blank"),
   br(),
+  br(),
+  
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(

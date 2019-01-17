@@ -108,16 +108,16 @@
 
 <p>I developed <strong><em>Notes with autocompletion</em></strong>, which is an application to create notes/memos easy. Autocompletion function helps users to type the next word based on their input words.</p>
 
-<p>The applecation link is: <a href='https://norihiton.shinyapps.io/NextWordPrediction' title=''>https://norihiton.shinyapps.io/NextWordPrediction</a></p>
+<p><a href='https://norihiton.shinyapps.io/NextWordPrediction' title=''>Application link</a></p>
 
-<p>The source code is: &lt;&gt;.</p>
+<p><a href='https://github.com/NorihitoN/nextWordPrediction' title=''>Source code</a></p>
 
 </article></slide><slide class=""><hgroup><h2>How To Use</h2></hgroup><article  id="how-to-use">
 
 <ul>
 <li>Write your note in the text box at the left side bar.</li>
 <li>During writing a note, the next prediction word appears below the text box in 5sec.</li>
-<li>If you click one of the prediction words, the word will be added to the text box. If not needed, coutinue to write by yourself.</li>
+<li>If you click one of the prediction words, the clicked word will be added to the text box. If not needed, coutinue to write by yourself.</li>
 <li>Click &quot;Post&quot; button to add your note to &quot;Memos&quot; list at the main panel.</li>
 <li>Click &quot;Clear&quot; button to clear all your notes.</li>
 </ul>
@@ -127,15 +127,24 @@
 <p>To predict the next words, three-gram method is used, which is the special case of N-gram method.</p>
 
 <ul>
-<li><p>Model Building I sampled 30,000 sentences from blogs/twitters. All sentences are corpused by R library <strong>quantum</strong> and are converted to three-gram, document-frequecy matrix.</p></li>
-<li><p>Prediction</p></li>
+<li>Model Building</li>
 </ul>
+
+<p>Sampled all sentences from blogs. The data are tokenized by <strong>quanteda</strong> library and are converted to a document-feature matrix (<code>ngrams = 3</code>). I used <code>textstat_frequency</code> function to create the dataset which has two columns, <code>3-gram</code> and <code>frequency</code>. I extracted <code>3-gram</code> of which <code>frequency</code> is above one, and saved as <code>3gram.csv</code>.</p>
+
+<ul>
+<li>Prediction</li>
+</ul>
+
+<p>The prediction function gets input sentence and extracts the last two words, and finds three-gram words from <code>3gram.csv</code> which matches the extracted two words. If three-grams are found, the function returns the third word of the three-gram.</p>
 
 </article></slide><slide class=""><hgroup><h2>Performance</h2></hgroup><article  id="performance">
 
 <ul>
 <li>Model Performance</li>
-</ul></article></slide>
+</ul>
+
+<p>The accuracy of this function is not high because the target of upper limit of file size should be less than 100MB. I will try to create other dataset by using 5/4 gram to take care of file size and prediction accuracy.</p></article></slide>
 
 
   <slide class="backdrop"></slide>

@@ -17,11 +17,9 @@ This is an assginment for [Data Science Capstone](https://www.coursera.org/learn
 I developed ***Notes with autocompletion***, which is an application to create notes/memos easy.
 Autocompletion function helps users to type the next word based on their input words.
 
-The applecation link is:
-<https://norihiton.shinyapps.io/NextWordPrediction>
+[Application link](https://norihiton.shinyapps.io/NextWordPrediction)
 
-The source code is:
-<>.
+[Source code](https://github.com/NorihitoN/nextWordPrediction)
 
 ## How To Use
 
@@ -36,14 +34,18 @@ The source code is:
 To predict the next words, three-gram method is used, which is the special case of N-gram method.
 
 - Model Building
-I sampled 30,000 sentences from blogs/twitters. All sentences are tokenized by R library **quanteda** and are converted to a document-feature matrix, which option `ngrams` equals 3).
-By using `textstat_frequency`, I created the dataset which has two columns, `3-gram` and `frequency`.
+
+Sampled all sentences from blogs. The data are tokenized by **quanteda** library and are converted to a document-feature matrix (`ngrams = 3`).
+I used `textstat_frequency` function to create the dataset which has two columns, `3-gram` and `frequency`. I extracted `3-gram` of which `frequency` is above one, and saved as `3gram.csv`.
 
 - Prediction
-The next word prediction function is performed based on the dataset built in the above.
-The function is 
+
+The prediction function gets input sentence and extracts the last two words, and finds three-gram words from `3gram.csv` which matches the extracted two words. If three-grams are found, the function returns the third word of the three-gram.
 
 
 ## Performance
 
 - Model Performance
+
+The accuracy of this function is not high because the target of upper limit of file size should be less than 100MB. 
+I will try to create other dataset by using 5/4 gram to take care of file size and prediction accuracy.
